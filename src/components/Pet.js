@@ -15,10 +15,10 @@ export default class Pet extends Component {
             <dt><b>Gender: </b>{this.props.petToAdopt.sex}</dt>
             <dt><b>Age: </b>{this.props.petToAdopt.age}</dt>
             <dt><b>Breed: </b>{this.props.petToAdopt.breed}</dt>
-            <dt><b>Story: </b>{this.props.petToAdopt.story}</dt>
+            <dt><b>{this.props.petToAdopt.name} Story: </b>{this.props.petToAdopt.story}</dt>
           </dl>
         </main>
-        <button nameClass='adopt-btn'>Adopt {this.props.petToAdopt.name}!</button>
+        <button nameClass='adopt-btn' onClick={this.props.onClick} value={this.props.petType}>Adopt {this.props.petToAdopt.name}!</button>
       </section>
     );
   }
