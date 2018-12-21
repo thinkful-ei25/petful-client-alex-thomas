@@ -6,7 +6,7 @@ import { fetchCats } from './actions/cats';
 import { fetchDogs } from './actions/dogs';
 
 export class Dashboard extends Component {
-
+  
   componentDidMount(){
     this.props.dispatch(fetchCats());
     this.props.dispatch(fetchDogs());
@@ -15,8 +15,8 @@ export class Dashboard extends Component {
   onAdoptPet() {
     console.log('Adopt button testing...');
   }
-
-  render() {
+  
+  showPets(){
     return (
       <div className='dashboard'>
         <h1>Here are the pets for adoption</h1>
@@ -24,8 +24,18 @@ export class Dashboard extends Component {
         <Pet petToAdopt={this.props.catsToAdopt} onClick={(e) => this.onAdoptPet()} petType={'cat'}/>
         <h2>Dog</h2>
         <Pet petToAdopt={this.props.dogsToAdopt} onClick={(e) => this.onAdoptPet()} petType={'dog'}/>
-      </div>
-    );
+      </div>);
+  }
+
+  render() {
+    if(this.props.catsToAdopt !== null && this.props.dogsToAdopt !== null){
+      return this.showPets();
+    }
+    else{
+      return (
+        <div>Loading...</div>
+      );
+    }
   }
 }
 

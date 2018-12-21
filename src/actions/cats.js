@@ -40,7 +40,7 @@ export const fetchCats = () => dispatch => {
   fetch(`${API_BASE_URL}/api/cat`, {
     method: 'GET',
     headers: {
-      Accept: 'application/json',
+      'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
   })
@@ -50,17 +50,16 @@ export const fetchCats = () => dispatch => {
     }
     return res.json();
   })
-  .then(data => dispatch(fetchCatsSuccess(data))
+  .then(data => dispatch(fetchCatsSuccess(data)))
   .catch(error => dispatch(fetchCatsError(error)))
-  );
-};
+}
 
 export const adoptCat = () => dispatch => {
   dispatch(deleteCatsRequest());
-  fetch(`${API_BASE_URL}/api/cats`, {
+  fetch(`${API_BASE_URL}/api/cat`, {
     method: 'DELETE',
     headers: {
-      Accept: 'application/json',
+      'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
   })
@@ -70,7 +69,6 @@ export const adoptCat = () => dispatch => {
     }
     return res.json();
   })
-  .then(() => dispatch(deleteCatsSuccess())
+  .then(() => dispatch(deleteCatsSuccess()))
   .catch(error => dispatch(deleteCatsError(error)))
-  );
-};
+}

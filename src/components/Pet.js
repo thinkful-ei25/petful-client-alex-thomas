@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 export class Pet extends Component {
-
+  
   render() {
     return (
       <section>
@@ -19,7 +19,7 @@ export class Pet extends Component {
             <dt><b>{this.props.petToAdopt.name} Story: </b>{this.props.petToAdopt.story}</dt>
           </dl>
         </main>
-        <button nameClass='adopt-btn' onClick={this.props.onClick} value={this.props.petType}>Adopt {this.props.petToAdopt.name}!</button>
+        <button className='adopt-btn' onClick={this.props.onClick} value={this.props.petType}>Adopt {this.props.petToAdopt.name}!</button>
       </section>
     );
   }

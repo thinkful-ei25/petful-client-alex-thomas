@@ -51,7 +51,7 @@ export default function dogReducer(state=initialState, action){
       ...state,
       loading:false,
       error: action.error,
-      data:null
+      data: null
     }
   }
 

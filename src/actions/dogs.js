@@ -13,7 +13,7 @@ export const fetchDogsError= (error) => ({
   error
 });
 
-export const FETCH_DOGS_REQUEST = 'FETCH_DOGS_ERROR';
+export const FETCH_DOGS_REQUEST = 'FETCH_DOGS_REQUEST';
 export const fetchDogsRequest= () => ({
   type: FETCH_DOGS_REQUEST
 });
@@ -33,7 +33,7 @@ export const adoptDogError = (error) => ({
 
 export const ADOPT_DOG_REQUEST= 'ADOPT_DOG_REQUEST';
 export const adoptDogRequest = () => ({
-  type: ADOPT_DOG_SUCCESS
+  type: ADOPT_DOG_REQUEST
 })
 
 
@@ -46,7 +46,7 @@ export const fetchDogs = () => {
     fetch(`${API_BASE_URL}/api/dog`, {
       method: 'GET',
       headers:{
-        Accept: 'application/json',
+        'Accept': 'application/json',
         'Content-Type': 'application/json'
       }
     })
@@ -64,10 +64,10 @@ export const fetchDogs = () => {
 export const adoptDog = () => {
   return (dispatch) => {
     dispatch(adoptDogRequest());
-    fetch(`${API_BASE_URL}/api/dogs`, {
+    fetch(`${API_BASE_URL}/api/dog`, {
       method: 'DELETE',
       headers:{
-        Accept: 'application/json',
+        'Accept': 'application/json',
         'Content-Type': 'application/json'
       }
     })
