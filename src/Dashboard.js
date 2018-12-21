@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './Dashboard.css';
 import Pet from './components/Pet';
 import { connect } from 'react-redux';
-import { fetchCats } from './actions/cats';
-import { fetchDogs } from './actions/dogs';
+import { fetchCats, adoptCat } from './actions/cats';
+import { fetchDogs, adoptDog } from './actions/dogs';
 
 export class Dashboard extends Component {
   
@@ -12,30 +12,49 @@ export class Dashboard extends Component {
     this.props.dispatch(fetchDogs());
   }
 
-  onAdoptPet() {
-    console.log('Adopt button testing...');
+  onAdoptDog() {
+    this.props.dispatch(adoptDog());
+    this.props.dispatch(fetchDogs());
   }
-  
-  showPets(){
-    return (
-      <div className='dashboard'>
-        <h1>Here are the pets for adoption</h1>
-        <h2>Cat</h2>
-        <Pet petToAdopt={this.props.catsToAdopt} onClick={(e) => this.onAdoptPet()} petType={'cat'}/>
-        <h2>Dog</h2>
-        <Pet petToAdopt={this.props.dogsToAdopt} onClick={(e) => this.onAdoptPet()} petType={'dog'}/>
-      </div>);
+
+  onAdoptCat() {
+    this.props.dispatch(adoptCat());
+    this.props.dispatch(fetchCats());
   }
 
   render() {
-    if(this.props.catsToAdopt !== null && this.props.dogsToAdopt !== null){
-      return this.showPets();
-    }
-    else{
-      return (
-        <div>Loading...</div>
+    let cats;
+    
+    if(this.props.catsToAdopt === null){
+      cats = <div>No more cats available :(</div>
+    } else {
+      cats = (
+      <div>
+        <h2>Cat</h2>
+        <Pet petToAdopt={this.props.catsToAdopt} onClick={(e) => this.onAdoptCat()} petType={'cat'}/>  
+      </div>
       );
     }
+
+    let dogs;
+    if(this.props.dogsToAdopt === null){
+      dogs = <div>No more dogs available :(</div>
+    } else {
+      dogs = (
+      <div>
+        <h2>Dog</h2>
+        <Pet petToAdopt={this.props.dogsToAdopt} onClick={(e) => this.onAdoptDog()} petType={'dog'}/>
+      </div>
+      );
+    }
+    
+    return (
+      <div>
+      <h1>Here are the pets for adoption</h1>
+      {cats}
+      {dogs}
+      </div>
+    );
   }
 }
 
