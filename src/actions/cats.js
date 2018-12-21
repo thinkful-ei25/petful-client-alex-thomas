@@ -37,7 +37,7 @@ export const deleteCatsRequest = () => ({
 
 export const fetchCats = () => dispatch => {
   dispatch(fetchCatsRequest());
-  fetch(`${API_BASE_URL}/api/cats`, {
+  fetch(`${API_BASE_URL}/api/cat`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',

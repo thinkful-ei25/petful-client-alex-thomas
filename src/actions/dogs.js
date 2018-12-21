@@ -43,7 +43,7 @@ export const adoptDogRequest = () => ({
 export const fetchDogs = () => {
   return(dispatch) => {
     dispatch(fetchDogsRequest());
-    fetch(`${API_BASE_URL}/api/dogs`, {
+    fetch(`${API_BASE_URL}/api/dog`, {
       method: 'GET',
       headers:{
         Accept: 'application/json',

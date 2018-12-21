@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-export default class Pet extends Component {
+export class Pet extends Component {
 
   render() {
     return (
@@ -24,3 +24,5 @@ export default class Pet extends Component {
     );
   }
 }
+
+export default connect()(Pet);
