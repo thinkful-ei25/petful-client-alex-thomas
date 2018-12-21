@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Dashboard from './Dashboard';
 import * as serviceWorker from './serviceWorker';
+import store from './store';
+import { Provider } from 'react-redux';
 
 let catToAdpot = {
   imageURL:'https://assets3.thrillist.com/v1/image/2622128/size/tmg-slideshow_l.jpg', 
@@ -25,7 +27,9 @@ let dogToAdopt = {
 }
 
 ReactDOM.render(
-  <Dashboard catToAdopt={catToAdpot} dogToAdopt={dogToAdopt}/>
+  <Provider store={store}>
+    <Dashboard />
+  </Provider>
   , document.getElementById('root')
 );
 
